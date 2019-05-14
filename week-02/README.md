@@ -8,10 +8,10 @@
 | Thursday        | [Packages][3-0]                       | [HTML & CSS][3-1]  |         |
 | Friday          | [Project][4-0]                        |                    |         |
 
-[0-0]: ./oo.md
-[0-1]: ./inheritance.md
-[1-0]: ./file-manipulations.md
-[2-0]: ./file-formats.md
+[0-0]: ./oo.ipynb
+[0-1]: ./inheritance.ipynb
+[1-0]: ./file-manipulations.ipynb
+[2-0]: ./file-formats.ipynb
 [3-0]: #
 [3-1]: #
 [4-0]: #

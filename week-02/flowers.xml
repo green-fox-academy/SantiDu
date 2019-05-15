@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<flowers>
+  <flower>
+    <color>Maroon</color>
+    <id>1</id>
+    <name>Pretty Sneezeweed</name>
+    <origin>Serbia</origin>
+  </flower>
+  <flower>
+    <color>Khaki</color>
+    <id>2</id>
+    <name>Tryon's Woodsia</name>
+    <origin>Portugal</origin>
+  </flower>
+  <flower>
+    <color>Crimson</color>
+    <id>3</id>
+    <name>Sycamore Fig</name>
+    <origin>Sweden</origin>
+  </flower>
+  <flower>
+    <color>Purple</color>
+    <id>4</id>
+    <name>Brown Bentgrass</name>
+    <origin>Philippines</origin>
+  </flower>
+  <flower>
+    <color>Red</color>
+    <id>5</id>
+    <name>Rinodina Lichen</name>
+    <origin>Nigeria</origin>
+  </flower>
+  <flower>
+    <color>Khaki</color>
+    <id>6</id>
+    <name>Angelon</name>
+    <origin>Luxembourg</origin>
+  </flower>
+  <flower>
+    <color>Violet</color>
+    <id>7</id>
+    <name>Nodding Beggartick</name>
+    <origin>Indonesia</origin>
+  </flower>
+  <flower>
+    <color>Pink</color>
+    <id>8</id>
+    <name>Encinitis False Willow</name>
+    <origin>Morocco</origin>
+  </flower>
+  <flower>
+    <color>Aquamarine</color>
+    <id>9</id>
+    <name>Japanese Sweet Coltsfoot</name>
+    <origin>Indonesia</origin>
+  </flower>
+  <flower>
+    <color>Orange</color>
+    <id>10</id>
+    <name>American Beachgrass</name>
+    <origin>Russia</origin>
+  </flower>
+  <flower>
+    <color>Mauv</color>
+    <id>11</id>
+    <name>Clustered Lady's Mantle</name>
+    <origin>China</origin>
+  </flower>
+  <flower>
+    <color>Fuscia</color>
+    <id>12</id>
+    <name>Beechdrops</name>
+    <origin>Australia</origin>
+  </flower>
+  <flower>
+    <color>Green</color>
+    <id>13</id>
+    <name>Pamohe</name>
+    <origin>South Korea</origin>
+  </flower>
+  <flower>
+    <color>Goldenrod</color>
+    <id>14</id>
+    <name>Sharpscale Flatsedge</name>
+    <origin>Portugal</origin>
+  </flower>
+  <flower>
+    <color>Indigo</color>
+    <id>15</id>
+    <name>River Cyrtandra</name>
+    <origin>Philippines</origin>
+  </flower>
+</flowers>

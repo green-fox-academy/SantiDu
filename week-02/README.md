@@ -5,7 +5,7 @@
 | Monday          | [Object Oriented Programming][0-0], [Pirate][3-0]  | [Inheritance][0-1] |         |
 | Tuesday         | [File IO and Exception handling][1-0] |                    |         |
 | Wednesday       | [File formats][2-0]                   |                    |         |
-| Thursday        | Packages                    | HTML & CSS |         |
+| Thursday        | Packages                    | [HTML & CSS][4-0] |         |
 | Friday          | Project                       |                    |         |
 
 [0-0]: ./oo.ipynb
@@ -14,4 +14,4 @@
 [2-0]: ./file-formats.ipynb
 [3-0]: ./pirate.ipynb
 [3-1]: #
-[4-0]: #
+[4-0]: ./HTMLandCSS/

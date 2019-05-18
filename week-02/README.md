@@ -6,12 +6,12 @@
 | Tuesday         | [File IO and Exception handling][1-0] |                    |         |
 | Wednesday       | [File formats][2-0]                   |                    |         |
 | Thursday        | Packages                    | [HTML & CSS][4-0] |         |
-| Friday          | Project                       |                    |         |
+| Friday          | [Project][3-1]                       |                    |         |
 
 [0-0]: ./oo.ipynb
 [0-1]: ./inheritance.ipynb
 [1-0]: ./file-manipulations.ipynb
 [2-0]: ./file-formats.ipynb
 [3-0]: ./pirate.ipynb
-[3-1]: #
+[3-1]: ./project/project.ipynb
 [4-0]: ./HTMLandCSS/

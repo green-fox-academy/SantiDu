@@ -1,11 +1,16 @@
 from flask import Flask, render_template
+from form import NameForm, PriceForm, QTYForm
+import csv
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'hard to guess string'
+
 
 ### HTML Workshop
 @app.route("/firstweb")
 def firstweb():
     return render_template("first-web.html")
+
 
 ### Movies
 movies = {
@@ -29,6 +34,34 @@ def movie(movie_id):
                             year=year, director=director, stars=stars)
 
 
+##### Web Form
+def queryProducts(data):
+    with open("products") as csv_file:
+        reader = csv.reader(csv_file, delimiter=';')
+        
+
+
+@app.route("/webform", methods=['GET', 'POST'])
+def webform():
+    name = None
+    price = None
+    qty = None
+    form1 = NameForm()
+    form2 = PriceForm()
+    form3 = QTYForm()
+    if form1.validate_on_submit():
+        name = form1.name.data
+        form1.name.data = ""
+    if form2.validate_on_submit():
+        price = form2.price.data
+        form2.price.data = ""
+    if form3.validate_on_submit():
+        qty = form3.qty.data
+        form3.qty.data = ""
+
+    return render_template("webform.html", 
+                            nameform=form1, priceform=form2, qtyform=form3,
+                            name=name, price=price, qty=qty)
 
 
 if __name__ == "__main__":

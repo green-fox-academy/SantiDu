@@ -8,10 +8,10 @@
 | Thursday        | Packages                    | [HTML & CSS][4-0] |         |
 | Friday          | [Project][3-1]                       |                    |         |
 
-[0-0]: ./oo.ipynb
-[0-1]: ./inheritance.ipynb
-[1-0]: ./file-manipulations.ipynb
-[2-0]: ./file-formats.ipynb
-[3-0]: ./pirate.ipynb
-[3-1]: ./project/project.ipynb
-[4-0]: ./HTMLandCSS/
+[0-0]: ./day-1/oo.ipynb
+[0-1]: ./day-1/inheritance.ipynb
+[1-0]: ./day-2/file-manipulations.ipynb
+[2-0]: ./day-3/file-formats.ipynb
+[3-0]: ./day-1/pirate.ipynb
+[3-1]: ./day-5/project.ipynb
+[4-0]: ./day-4/

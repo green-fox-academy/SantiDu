@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>login</title>
 </head>
 <body>
-    <h1>{{ title }}</h1>
-    <h5>{{ year }}</h5>
-    <h5>{{ director }}</h5>
-    <h5>{{ stars }}</h5>
+    {% import "bootstrap/wtf.html" as wtf %}
+    {{ wtf.quick_form(form) }}    
 </body>
 </html>

@@ -8,41 +8,30 @@
     <style>
         div {
             text-align: center;
-            padding: 20px 0;
+            padding-top: 50px;
         }
         ul {
             list-style-type: none;
-            padding: 0 20px;
             }
         li {
-            padding: 5px 0;
+            padding: 20px 0;
             font-size: 20px;
         }
     </style>
 </head>
 <body>
-    <div>
-        <h2><a href="{{ url_for('firstweb') }}">Exercise 1 (Serve your own website)</a></h2>
-    </div>
+
 
     <div>
-        <h2>Exercise 2 (Navigate), exercise 3 (Read from file):</h2>
         <ul>
             {% for id, name in movies.items() %}
             <li><a href="{{ url_for('movie', movie_id=id) }}">{{ name }}</a></li>
             {% endfor %}
     
-            <li><a href="../static/jw.jpg">How to defeat Thanos</a></li>
+            <li><a href="../static/movie_database/jw.jpg">How to defeat Thanos</a></li>
         </ul>
     </div>
 
-    <div>
-        <h2><a href="{{ url_for('webform') }}">Exercise 4 (Query parameters)</a></h2>
-    </div>
-    
-    <div>
-        <h2><a href="{{ url_for('firstweb') }}">Exercise 5 (Basic authentication system)</a></h2>
-    </div>
 
 </body>
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+    <style>
+        form {
+            text-align: center;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        <p>
+            {{ form.field.label }}<br>
+            {{ form.field() }}
+        </p>
+        <p>
+            {{ form.name() }}
+            {{ form.price() }}
+            {{ form.qty()}}
+        </p>
+    </form>
+
+</body>
+</html>

@@ -15,6 +15,7 @@
 <body>
     <form method="POST">
         <p>
+            {{ form.hidden_tag() }}
             {{ form.field.label }}<br>
             {{ form.field() }}
         </p>
@@ -24,6 +25,9 @@
             {{ form.qty()}}
         </p>
     </form>
+    {% if form.errors %}
+    {{ form.errors }}
+    {% endif %}
 
 </body>
 </html>

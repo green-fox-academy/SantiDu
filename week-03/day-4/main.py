@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify, make_response
 from functools import wraps
+from os import listdir, remove
+from re import match
 
 app = Flask(__name__)
 API_KEY = "soyunllave"
@@ -41,14 +43,26 @@ def require_appkey(view_function):
     return decorated_function
 
 
-def post_movie_data(body):
+def postdata_into_database(movie_json):
     """
-    input: 
+    input: json data in the request
     output: none, but write data to database
     """
-    pass
+    files = listdir("database")
+    id = int(match(r"\d+", files[-1]).group()) + 1
+    newfpath = f"./database/{id}.txt"
+    try:    
+        with open(newfpath, "w") as f:
+            f.write(str(id) + "\n")
+            f.write(str(movie_json["title"]) + "\n")
+            f.write(str(movie_json["year"]) + "\n")
+            f.write(str(movie_json["genre"]) + "\n")
+            f.write(str(movie_json["description"]) + "\n")
+    except KeyError:
+        remove(newfpath)
+        return "Mal-formatted json"
+    
 
- 
 @app.route("/api/movies")
 def api_movies():
     return jsonify(all_movie_data())
@@ -57,7 +71,10 @@ def api_movies():
 @app.route("/api/movies", methods=["POST"])
 @require_appkey
 def api_movies_post():
-    return "Your movie is in the database!"
+    malJsonMessage = postdata_into_database(request.get_json())
+    if malJsonMessage == "Mal-formatted json":
+        return "You should have title, year, genre and description as fields in json."
+    return "Your movie has been added to the database successfully."
 
         
 

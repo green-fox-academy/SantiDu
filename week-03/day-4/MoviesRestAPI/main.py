@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify, make_response
 from functools import wraps
 from os import listdir, remove
 from re import match
-import fileinput
 
 app = Flask(__name__)
 API_KEY = "soyunllave"

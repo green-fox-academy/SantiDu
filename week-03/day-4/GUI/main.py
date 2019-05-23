@@ -1,11 +1,21 @@
-from flask import Flask, request, jsonify, make_response, render_template
+from flask import Flask, request, jsonify, make_response, render_template, redirect, url_for
+from flask_wtf import FlaskForm
+from wtforms import StringField, IntegerField, SubmitField
 from functools import wraps
 from os import listdir, remove
-from re import match
+from re import match, compile
+from requests import put
 
 app = Flask(__name__)
 API_KEY = "soyunllave"
+app.config["SECRET_KEY"] = "hard to guess string"
 
+class MovieForm(FlaskForm):
+    title = StringField("Title")
+    year = IntegerField("Year")
+    dscrptn = StringField("Description")
+    genre = StringField("Genre")
+    submit = SubmitField("Submit")
 
 def get_movie_data(filename):
     """
@@ -120,8 +130,8 @@ def movies():
     flist = filter(compile(r"\d+.txt").match, flist)
     for fname in flist:
         with open(f"./database/{fname}") as f:
-            id = f.readline()
-            title = f.readline()
+            id = f.readline().rstrip()
+            title = f.readline().rstrip()
         idtitle[id] = title
     return render_template("movies.html", idtitle=idtitle)
 
@@ -132,8 +142,21 @@ def add_movie():
 
 
 @app.route("/edit-movie/<movie_id>", methods=["GET", "POST"])
-def edit_movie():
-    
+def edit_movie(movie_id):
+    form = MovieForm()
+    movie_json = {}
+    if form.validate_on_submit():
+        if form.title.data:
+            movie_json["title"] = form.title.data
+        if form.year.data:
+            movie_json["year"] = form.year.data
+        if form.genre:
+            movie_json["genre"] = form.genre.data
+        if form.dscrptn:
+            movie_json["description"] = form.dscrptn.data
+        put(url=url_for(api_movie_id_put, movie_id=movie_id.rstrip()), json=movie_json)
+    return render_template("edit_movie.html", form=form)
+
 
 
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>edit-movie</title>
+</head>
+<body>
+    <form method="POST">
+        <p>
+            {{ form.hidden_tag() }}
+            {{ form.title.label }}
+            {{ form.title() }}
+        </p>
+
+        <p>
+            {{ form.year.label }}
+            {{ form.year() }}
+        </p>
+
+        <p>
+            {{ form.genre.label }}
+            {{ form.genre() }}
+        </p>
+
+        <p>
+            {{ form.dscrptn.label }}
+            {{ form.dscrptn() }}
+        </p>
+
+        <p>
+            {{ form.submit() }}
+        </p>
+
+        
+    </form>
+</body>
+</html>

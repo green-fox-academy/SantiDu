@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>movies</title>
+</head>
+<body>
+    {% for id, title in idtitle.items() %}
+    <li><a href="{{ url_for('edit_movie', movie_id=id) }}">{{ title }}</a></li>
+    {% endfor %}
+</body>
+</html>

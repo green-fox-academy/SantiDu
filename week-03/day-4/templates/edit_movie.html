@@ -9,12 +9,11 @@
 <body>
     <form method="POST">
         <p>
-            {{ form.hidden_tag() }}
             {{ form.title.label }}
             {{ form.title() }}
         </p>
 
-        <p>
+        <p> 
             {{ form.year.label }}
             {{ form.year() }}
         </p>
@@ -29,7 +28,8 @@
             {{ form.dscrptn() }}
         </p>
 
-        <p>
+        <p> 
+            {{ form.csrf_token }}
             {{ form.submit() }}
         </p>
 

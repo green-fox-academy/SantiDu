@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, make_response, render_template, redirect, url_for
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SubmitField
+from wtforms import StringField, SubmitField, DateField
 from functools import wraps
 from os import listdir, remove
 from re import match, compile
@@ -12,7 +12,7 @@ app.config["SECRET_KEY"] = "hard to guess string"
 
 class MovieForm(FlaskForm):
     title = StringField("Title")
-    year = IntegerField("Year")
+    year = StringField("Year")
     dscrptn = StringField("Description")
     genre = StringField("Genre")
     submit = SubmitField("Submit")
@@ -154,7 +154,10 @@ def edit_movie(movie_id):
             movie_json["genre"] = form.genre.data
         if form.dscrptn:
             movie_json["description"] = form.dscrptn.data
-        put(url=url_for(api_movie_id_put, movie_id=movie_id.rstrip()), json=movie_json)
+        response = put(url=f"http://127.0.0.1:5000/api/movies/{movie_id}", 
+            json=movie_json, 
+            headers={"API_KEY": "soyunllave"})
+        return response.content
     return render_template("edit_movie.html", form=form)
 
 

@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, make_response
 from functools import wraps
 from os import listdir, remove
 from re import match
+import fileinput
 
 app = Flask(__name__)
 API_KEY = "soyunllave"
@@ -43,25 +44,29 @@ def require_appkey(view_function):
     return decorated_function
 
 
-def postdata_into_database(movie_json):
+def data_into_database(movie_json, fpath, id, method="POST"):
     """
     input: json data in the request
     output: none, but write data to database
     """
-    files = listdir("database")
-    id = int(match(r"\d+", files[-1]).group()) + 1
-    newfpath = f"./database/{id}.txt"
-    try:    
-        with open(newfpath, "w") as f:
+    try:
+        if method == "PUT":
+            with open(fpath) as f:
+                content = f.read()
+        with open(fpath, "w+") as f:    
             f.write(str(id) + "\n")
             f.write(str(movie_json["title"]) + "\n")
             f.write(str(movie_json["year"]) + "\n")
             f.write(str(movie_json["genre"]) + "\n")
             f.write(str(movie_json["description"]) + "\n")
     except KeyError:
-        remove(newfpath)
+        if method == "POST":
+            remove(fpath)
+        elif method == "PUT":
+            with open(fpath, "w") as f:
+                f.write(content)
         return "Mal-formatted json"
-    
+
 
 @app.route("/api/movies")
 def api_movies():
@@ -71,20 +76,43 @@ def api_movies():
 @app.route("/api/movies", methods=["POST"])
 @require_appkey
 def api_movies_post():
-    malJsonMessage = postdata_into_database(request.get_json())
+    files = listdir("database")
+    id = int(match(r"\d+", files[-1]).group()) + 1
+    fpath = f"./database/{id}.txt"
+    malJsonMessage = data_into_database(request.get_json(), fpath, id=id)
     if malJsonMessage == "Mal-formatted json":
         return "You should have title, year, genre and description as fields in json."
     return jsonify(request.get_json())
 
         
-
-@app.route("/api/movies/<movie_id>", methods=["GET", "PUT", "DELETE"])
+@app.route("/api/movies/<movie_id>")
 def api_movie_id(movie_id):
-    if request.method == "GET":
-        filename = f"./database/{movie_id}.txt"
-        return jsonify(get_movie_data(filename))
-    elif request.method == "POST":
-        pass
+    filename = f"./database/{movie_id}.txt"
+    return jsonify(get_movie_data(filename))
+    
+
+@app.route("/api/movies/<movie_id>", methods=["PUT"])
+@require_appkey
+def api_movie_id_put(movie_id):
+    flist = listdir("database")
+    fname = f"{movie_id}.txt"
+    if fname in flist:
+        fname = f"./database/{movie_id}.txt"
+        malJsonMessage = data_into_database(request.get_json(), fname, id=movie_id, method="PUT")
+        if malJsonMessage == "Mal-formatted json":
+            return "You should have title, year, genre and description as fields in json."
+        return jsonify(request.get_json())
+    return make_response(jsonify({"error": f"No movie found with {movie_id} ID"}), 404)        
+
+
+@app.route("/api/movies/<movie_id>", methods=["DELETE"])
+@require_appkey
+def api_movie_id_delete(movie_id):
+    try:
+        remove(f"./database/{movie_id}.txt")
+    except FileNotFoundError:
+        return make_response(jsonify({"error": f"No movie found with {movie_id} ID"}), 404)
+    
 
 
 

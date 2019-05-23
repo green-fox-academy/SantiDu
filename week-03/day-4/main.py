@@ -39,7 +39,7 @@ def require_appkey(view_function):
         if request.headers.get('API_KEY') == API_KEY:
             return view_function(*args, **kwargs)
         else:
-            return make_response("Unauthorized", 401)    
+            return make_response(jsonify({"error": "Invalid API_KEY"}), 403)    
     return decorated_function
 
 
@@ -74,7 +74,7 @@ def api_movies_post():
     malJsonMessage = postdata_into_database(request.get_json())
     if malJsonMessage == "Mal-formatted json":
         return "You should have title, year, genre and description as fields in json."
-    return "Your movie has been added to the database successfully."
+    return jsonify(request.get_json())
 
         
 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>products</title>
+</head>
+<body>
+  <table>
+    <tr>
+        <th>#</th>
+        <th>Product</th>
+        <th>Price</th>
+    </tr>
+    {% for product in products %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ product[0] }}</td>
+      <td>{{ product[1] | round(2) }} ¥</td>
+    </tr>
+    {% endfor %}
+  </table>  
+</body>
+</html>
+

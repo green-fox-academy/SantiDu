@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="../static/posts.css">
 </head>
 <body>
+    {% extends "base.html" %}
+    {% set active_page = "posts" %}
+    {% block body %}
+
     <h1>Posts</h1>
     {% for post in posts %}
         <article>
@@ -20,5 +24,7 @@
             {% endif %}
         </article>
     {% endfor %}
+
+    {% endblock %}
 </body>
 </html>

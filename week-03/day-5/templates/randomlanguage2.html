@@ -7,6 +7,10 @@
     <title>random language 2</title>
 </head>
 <body>
+    {% extends "base.html" %}
+    {% set active_page = "randomlanguage2" %}
+    {% block body %}
     <h1>{{ greeting }}, {{ name | capitalize }}!</h1>
+    {% endblock %}
 </body>
 </html>

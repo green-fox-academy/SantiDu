@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>navigation</title>
-</head>
-<body>
-    <h2><a href="{{ url_for('randomLanguage') }}">Random Language</a></h2>
-    <h2><a href="{{ url_for('randomLanguage2') }}">Random Language 2</a></h2>
-    <h2><a href="{{ url_for('products') }}">Products</a></h2>
-    <h2><a href="{{ url_for('list_articles') }}">Articles</a></h2>
-    <h2><a href="{{ url_for('list_posts') }}">Posts</a></h2>
-</body>
-</html>
+{% set navigation_bar = [
+    ('/', 'index', 'Index'),
+    ('/randomlanguage', 'randomlanguage', 'Random Language'),
+    ('/randomlanguage2', 'randomlanguage2', 'Random Language 2'),
+    ('/products', 'products', 'Products'),
+    ('/articles', 'articles', 'Articles'),
+    ('/posts', 'posts', 'Posts')
+] -%}
+{% set active_page = active_page|default('index') -%}
+...
+<ul id="navigation">
+{% for href, id, caption in navigation_bar %}
+  <li{% if id == active_page %} class="active"{% endif
+  %}><a href="{{ href|e }}">{{ caption|e }}</a></li>
+{% endfor %}
+</ul>
+
+{% block body %}{% endblock %}

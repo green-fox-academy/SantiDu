@@ -7,6 +7,10 @@
     <title>articles</title>
 </head>
 <body>
+    {% extends "base.html" %}
+    {% set active_page = "articles" %}
+    {% block body %}
+    
     {% for article in articles %}
         <p>
             {{ article["content"] | truncate(225, killwords=True) }}
@@ -22,5 +26,6 @@
         </p>
     {% endfor %}
 
+    {% endblock %}
 </body>
 </html>

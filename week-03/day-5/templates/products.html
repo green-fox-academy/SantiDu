@@ -7,6 +7,10 @@
   <title>products</title>
 </head>
 <body>
+  {% extends "base.html" %}
+  {% set active_page = "products" %}
+  {% block body %}
+
   <table>
     <tr>
         <th>#</th>
@@ -21,6 +25,8 @@
     </tr>
     {% endfor %}
   </table>  
+
+  {% endblock %}
 </body>
 </html>
 

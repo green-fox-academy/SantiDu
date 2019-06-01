@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>reactions</title>
+    <style>
+    iframe {
+        width: 100%;
+    }
+    h1 {
+        text-align: center;
+        }
+    </style>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% set active_page = "reactions" %}
+    {% block body %}
+    <br>
+    <h1>Reactions</h1>
+    <br>
+    <br>
+    <div style="padding:13px 0 19px 0">
+        <iframe width="952px" height="600px" iframe="reactions" src="http://127.0.0.1:5000/app2/">
+        </iframe>
+    </div>  
+    {% endblock%}  
+</body>
+</html>

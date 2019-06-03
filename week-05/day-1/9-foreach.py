@@ -1,2 +1,5 @@
 def foreach(iterable, function):
-    return (function(element) for element in iterable)
+    for element in iterable:
+        function(element)
+
+

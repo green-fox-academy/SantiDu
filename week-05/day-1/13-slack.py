@@ -46,7 +46,7 @@ while True:
     try:
         msg, reactions, mentions = next(data)
         msg_tuple = msg_tuple + (msg,)
-        reaction_tuple = reaction_tuple + (reactions,)
-        mention_tuple = mention_tuple + (mentions,)
+        reaction_tuple = reaction_tuple + reactions
+        mention_tuple = mention_tuple + mentions
     except StopIteration:
         break
